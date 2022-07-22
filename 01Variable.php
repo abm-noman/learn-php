@@ -1,4 +1,12 @@
 <?php
+// Correct Ways of writing variables
+$_variable;
+$variable;
+$variable_3;
+$Var4;
+$varFive; //camel case
+
+
 $name = "Bangladesh"; //string
 $age = 51; //int
 
