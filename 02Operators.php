@@ -4,7 +4,7 @@
 - = Subtraction
 * = Multiplication
 / = Division
-% = Modulo
+% = Modulus
 ** = Exponentiation */
 
 $num1 = 10;
@@ -21,3 +21,6 @@ echo "{$num1} * {$num2} = {$Multiplication}\n";
 
 $Division = $num1 / $num2;
 echo "{$num1} / {$num2} = {$Division}\n";
+
+$Modulus = $num1 % $num2;
+echo "{$num1} % {$num2} = {$Modulus}\n";
