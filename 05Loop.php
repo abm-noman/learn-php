@@ -37,3 +37,20 @@ do{
     $i++;
     echo $i.PHP_EOL;
 }while($i<10);
+
+
+//Fibonacci Series
+echo "\n";
+echo("Fibonacci Series");
+echo "\n";
+$veryold = 0;
+$old = 1;
+$new = 1;
+
+for($i=0; $i<20; $i++){
+    echo $veryold." ";
+    $old = $new;
+    $new = $old + $veryold;
+    $veryold = $old;
+
+}
