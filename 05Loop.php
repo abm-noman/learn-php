@@ -43,14 +43,14 @@ do{
 echo "\n";
 echo("Fibonacci Series");
 echo "\n";
-$veryold = 0;
+$very_old = 0;
 $old = 1;
 $new = 1;
 
 for($i=0; $i<20; $i++){
-    echo $veryold." ";
+    echo $very_old." ";
     $old = $new;
-    $new = $old + $veryold;
-    $veryold = $old;
+    $new = $old + $very_old;
+    $very_old = $old;
 
 }
