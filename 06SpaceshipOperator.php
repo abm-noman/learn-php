@@ -32,4 +32,20 @@ else if (greaterOrSmaller($x, $y)==-1){
 }
 
 
+
+//Spaceship operator <=>
+
+echo "\n";
+
+$result = $x <=> $y;
+if ($result==1){
+    echo "{$x} is greater than {$y}";
+}
+else if ($result==0){
+    echo "{$x} is equal to {$y}";
+}
+else if ($result==-1){
+    echo "{$x} is smaller than {$y}";
+}
+
 ?>
