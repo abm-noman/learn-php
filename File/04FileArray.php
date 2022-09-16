@@ -41,3 +41,4 @@ $students = array(
         $data = sprintf("%s %s,%s,%s,%s\n",$student['fname'],$student['lname'],$student['age'],$student['class'],$student['roll']);
         fwrite($fp, $data);
     }
+    fclose($fp);
