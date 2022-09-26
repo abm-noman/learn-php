@@ -1,3 +1,14 @@
+<?php
+$info = '';
+
+    require_once ('inc/functions.php');
+    $task = $_GET['task']??'report';
+    if('seed' == $task ){
+        seed(DB_NAME);
+        $info = "Seeding is Completed";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +34,11 @@
                 <h1>CRUD Operation</h1>
                 <p>A sample project to perform CRUD(Create Read Update Delete) operations using plain files and PHP</p>
                 <?php include_once ('inc/templates/nav.php');?>
+                <hr>
+                <?php 
+                if($info !=''){
+                    echo "<p>{$info}</p>";
+                } ?>
             </div>
         </div>
     </div>
