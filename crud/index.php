@@ -4,7 +4,7 @@ $info = '';
     require_once ('inc/functions.php');
     $task = $_GET['task']??'report';
     if('seed' == $task ){
-        seed(DB_NAME);
+        seed();
         $info = "Seeding is Completed";
     }
 ?>
@@ -39,6 +39,12 @@ $info = '';
                 if($info !=''){
                     echo "<p>{$info}</p>";
                 } ?>
+            </div>
+        </div>
+        <?php if('report' == $task); ?>
+        <div class="row">
+            <div class="column column-60 column-offset-20">
+                <?php generateReport(); ?>
             </div>
         </div>
     </div>
