@@ -55,7 +55,7 @@ function generateReport(){
                 <td><?php printf('%s %s',$student['fname'],$student['lname']);?></td>
                 <td><?php printf('%s',$student['roll']);?></td>
                 <td><?php printf('%s',$student['age']);?></td>
-                <td><?php printf('<a href="/crud/index.php?task=edit&id=%s">Edit</a>  |  <a href="/crud/index.php?task=edit&id=%s">Delete</a>',$student['id'], $student['id']);?></td>
+                <td><?php printf('<a href="/crud/index.php?task=edit&id=%s">Edit</a>  |  <a class="delete" href="/crud/index.php?task=delete&id=%s">Delete</a>',$student['id'], $student['id']);?></td>
             </tr>
             <?php
         }
@@ -77,13 +77,13 @@ function addStudent($fname, $lname, $age, $roll){
         }
     }
     if(!$found){
-        $newId = count($students)+1;
+        $newId = getNewId($students);
         $student = array(
             'id' => $newId,
             'fname'=> $fname,
             'lname'=> $lname,
             'age'=> $age,
-            'roll'=> $roll,
+            'roll'=> $roll
         );
         array_push($students, $student);
         $serializedData = serialize($students);
@@ -125,4 +125,33 @@ function updateStudent($id, $fname, $lname, $age, $roll){
         return true;
     }
     return false;
+}
+
+
+function deleteStudent($id){
+    $serializedData = file_get_contents(DB_NAME);
+    $students = unserialize($serializedData);
+    $i=0;
+    foreach($students as $offset=>$student){
+        if($student['id'] == $id){
+            unset($students[$offset]);
+        }
+    }
+    $serializedData = serialize($students);
+    file_put_contents(DB_NAME ,$serializedData, LOCK_EX); 
+
+
+}
+
+function printRaw(){
+    $serializedData = file_get_contents(DB_NAME);
+    $students = unserialize($serializedData);
+    print_r($students);
+
+
+}
+
+function getNewId($students){
+    $maxId = max(array_column($students, 'id'));
+    return $maxId+1;
 }

@@ -4,6 +4,15 @@
     $info = '';
     $task = $_GET['task']??'report';
     $error = $_GET['error']??'0';
+
+    if($task == 'delete'){
+        $id = filter_input(INPUT_GET,'id', FILTER_SANITIZE_NUMBER_FLOAT);
+        if($id>0){
+            deleteStudent($id);
+            header('location: /crud/index.php?task=report');
+
+        }
+    }
     if('seed' == $task ){
         seed();
         $info = "Seeding is Completed";
@@ -80,7 +89,7 @@
             </div>
         </div>
 
-        <?php if('1' == $error); ?>
+        <?php if('1' == $error): ?>
         <div class="row">
             <div class="column column-60 column-offset-20">
                 <blockquote>
@@ -88,12 +97,22 @@
                 </blockquote>
             </div>
         </div>
+        <?php endif; ?>
+
+        <?php if('report'==$task): ?>
         <div class="row">
             <div class="column column-60 column-offset-20">
                 <?php generateReport(); ?>
+                <!-- <div>
+                    <pre>
+                        <?php printRaw(); ?>
+                    </pre>
+                </div> -->
             </div>
         </div>
-        <?php if('add' == $task); ?>
+        <?php endif; ?>
+
+        <?php if('add' == $task): ?>
         <div class="row">
             <div class="column column-60 column-offset-20">
                 <form action="index.php?task=add" method="POST">
@@ -110,9 +129,11 @@
                 </form>
             </div>
         </div>
+        <?php endif; ?>
+
 
         <?php 
-        if('edit' == $task)
+        if('edit' == $task):
             $id = filter_input(INPUT_GET,'id',FILTER_SANITIZE_STRING);
             $student = getStudent($id);
             if($student):
@@ -134,10 +155,9 @@
                 </form>
             </div>
         </div>
-        <?php
-        endif;
-    
-    ?>
+        <?php endif;   
+        endif; ?>
     </div>
+    <script type="text/javascript" src="assets/js/script.js"></script>
 </body>
 </html>
