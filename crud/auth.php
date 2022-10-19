@@ -1,6 +1,6 @@
 <?php
 session_start([
-    'cookie_lifetime'=>300
+    'cookie_lifetime'=>10,
 ]);
 $error = false;
 
@@ -14,14 +14,14 @@ $fp = fopen("./data/user.txt","r");
     $_SESSION['role'] = false;
     while($data = fgetcsv($fp)){
    
-        if($data[0] ==$username && $data[1] == sha1($password)){
+        if($data[0] == $username && $data[1] == sha1($password)){
             $_SESSION['loggedin'] = true;
             $_SESSION['user'] = $username;
             $_SESSION['role'] = $data[2];
             
             header('location:index.php');
         }
-        if($_SESSION['loggedin']){
+        if(!$_SESSION['loggedin']){
             $error = true;
         }
     }

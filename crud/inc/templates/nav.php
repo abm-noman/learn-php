@@ -4,8 +4,19 @@
     <div class="float-left">
         <p>
             <a href="/crud/index.php?task=report">All Students  |  </a>
+            <?php
+            if(hasPrivilege()):
+            ?>
             <a href="/crud/index.php?task=add">Add New Students  |  </a>
+            <?php endif; ?>
+            <?php
+                if(isAdmin()):
+            ?>
             <a href="/crud/index.php?task=seed">Seed </a>
+            <?php
+                endif;
+            ?>
+
         </p>
     </div>
     <div class="float-right">
@@ -16,7 +27,7 @@
         <?php
             else:
         ?>
-        <a href="/crud/auth.php?logout=true">Log Out (<?php echo $_SESSION['role']; ?>)</a>
+        <a href="/crud/auth.php?logout=true">Log Out (<?php echo $_SESSION['role'] ?>)</a>
         <?php
             endif;
         ?>
