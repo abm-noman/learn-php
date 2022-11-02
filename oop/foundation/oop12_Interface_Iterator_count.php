@@ -1,6 +1,6 @@
 <?php
 
-class DistrictCollection implements IteratorAggregate,Countable{
+class DistrictCollection implements IteratorAggregate, Countable{
     private $districts;
     function __construct()
     {
