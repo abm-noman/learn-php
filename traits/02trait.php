@@ -1,11 +1,26 @@
 <?php
-trait User{     
+
+use Student as GlobalStudent;
+
+trait Human{     
     public function get(){
-        echo "Welcome to user trait. \n";
+        echo "Welcome to Human trait. \n";
     }
 }
 
-$user = new User;
+trait Robot{     
+    public function showRobot(){
+        echo "Welcome to Robot trait. \n";
+    }
+}
 
+class Student{
+    use Human;
+    use Robot;
+}
+
+$std = new Student;
+$std->get();
+$std->showRobot();
 
 ?>
