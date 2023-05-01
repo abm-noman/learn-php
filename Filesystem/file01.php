@@ -36,5 +36,4 @@ echo "total directory = ";
 echo countDir(getcwd());
 
 
-
 ?>
