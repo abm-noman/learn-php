@@ -16,13 +16,13 @@ class Student{
 }
 
 //Single Responsibility Principle
-class attendance(){
+class attendance{
 
 }
-class grade(){
-
+class grade{
+    
 }
-class payment(){
+class payment{
     
 }
 
