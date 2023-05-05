@@ -69,8 +69,6 @@ class Penguin extends WalkingBird{
     function sleep(){
         echo "Penguin is sleeping";
     }
-
-
 }
 
 
