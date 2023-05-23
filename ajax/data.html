@@ -48,7 +48,11 @@
 <script>
     function sendData(){
         let xhr= new XMLHttpRequest();
-        xhr.open("GET","data.php?foo=bar&hello=world",true);
+        xhr.open("POST","data.php",true);
+        xhr.setRequestHeader{
+            "Content-type",
+            "application/x-www-form-urlencoded" 
+            }
         xhr.onreadystatechange = function(){
             if(this.readyState===4 && this.status===200){
                 document.getElementById('result').innerHTML = this.responseText;
@@ -56,7 +60,7 @@
                 console.log(response.result);
             }
         }
-        xhr.send();
+        xhr.send("foo=bar&hello=world");
     }
 
     document.getElementById('send').addEventListener('click',function(){
